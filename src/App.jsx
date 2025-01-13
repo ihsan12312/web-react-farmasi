@@ -1,17 +1,10 @@
+import Header from "./components/header"
 import './App.css';
 
 function App() {
   return (
     <>
-      <header>
-        <div className="header-logo">
-          <img src="/apotek-logo.png" alt="Logo Apotek" />
-        </div>
-        <div className="header-title">
-          <h1>Tempat Penjualan Obat</h1>
-          <p>Informasi mengenai apotek dan tempat penjualan obat terpercaya</p>
-        </div>
-      </header>
+      <Header />
 
       <nav>
         <a href="index.html" className="active">Home</a>
