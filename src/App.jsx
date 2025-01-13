@@ -18,9 +18,10 @@ function App() {
               di sekitar Anda. Temukan apotek terdekat dan dapatkan informasi lengkap tentang
               layanan yang mereka tawarkan.
             </p>
-            <a href="daftar-apotek.html" className="btn">Lihat Daftar Apotek</a>
+
           </div>
         </section>
+        </main>
 
         <section id="featured-photos">
           <div className="container">
@@ -95,7 +96,7 @@ function App() {
                 </div>
             </div>
         </section>
-    </main>
+    
 
       <footer>
         
