@@ -1,0 +1,138 @@
+.header-logo img {
+  width: 80px; /* Adjust logo size to make it smaller */
+  text-align: center;
+}
+
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  background-color: #487cb8;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  align-items: center; /* Center content vertically */
+
+}
+.header-title {
+  flex-grow: 1; /* Allow title section to take remaining space */
+  text-align: center; /* Align text to the right */
+}
+
+nav a {
+  text-decoration: none;
+  margin: 0 1rem;
+  color: #4c7faf;
+}
+
+nav a.active {
+  font-weight: bold;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.photo-section {
+  margin: 2rem 0;
+}
+
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 1rem;
+}
+
+
+main {
+  flex-grow: 1;
+  padding: 2rem 0;
+}
+
+
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  color: #007bff;
+  margin-top: 0;
+}
+
+/* Login styles */
+.login-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 2rem auto;
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  background-color: #333;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+      width: 95%;
+  }
+  
+  .login-container {
+      width: 90%;
+  }
+}
