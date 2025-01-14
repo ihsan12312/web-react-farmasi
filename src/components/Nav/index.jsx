@@ -1,11 +1,11 @@
 const Nav = () =>{
 return (
     <nav>
-    <a href="index.html" className="active">Home</a>
-    <a href="daftar-apotek.html">Daftar Apotek</a>
+    <a href="http://localhost:5174/">Home</a>
+    <a href="http://localhost:5174/Pembelian-Obat">pembelian Obat</a>
     <a href="about.html">About</a>
     
-    <a href="login.html">Login</a>
+    <a href="http://localhost:5174/Regesterasi">Regesterasi</a>
     </nav>
 );
 };
