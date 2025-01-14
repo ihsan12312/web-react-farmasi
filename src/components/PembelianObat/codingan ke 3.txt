@@ -1,0 +1,137 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import Input from '../Input';
+import Button from '../Button';
+import Logo from '../Logo';
+import './style.css';
+import logoPharmacy from '../../assets/pharmacy-logo.png';
+
+const PembelianObat = () => {
+    const [obat, setObat] = useState({
+        namaObat: '',
+        jenisObat: '',
+        hargaObat: ''
+    });
+
+    const [error, setError] = useState(null);
+    const [dataObat, setDataObat] = useState([]);
+
+    const navigate = useNavigate();
+
+    const fetchObat = async () => {
+        try {
+            const res = await fetch('http://localhost:1234/obat');
+            if (!res.ok) {
+                throw Error("Gagal mengambil data obat");
+            }
+            const data = await res.json();
+            setDataObat(data);
+        } catch (err) {
+            console.error(err);
+            setError(err.message || 'Terjadi kesalahan saat mengambil data.');
+        }
+    };
+
+    const handleAddObat = async (e) => {
+        e.preventDefault();
+
+        if (!obat.namaObat || !obat.jenisObat || !obat.hargaObat) {
+            setError('Semua kolom wajib diisi');
+            return;
+        }
+
+        setError(null);
+
+        try {
+            const res = await fetch('http://localhost:1234/obat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    namaObat: obat.namaObat,
+                    jenisObat: obat.jenisObat,
+                    hargaObat: obat.hargaObat
+                }),
+            });
+
+            if (!res.ok) {
+                throw Error("Gagal menambahkan obat");
+            }
+
+            const data = await res.json();
+            navigate('/obat-list');
+            console.log(data);
+
+            setObat({
+                namaObat: '',
+                jenisObat: '',
+                hargaObat: ''
+            });
+
+            fetchObat(); // Refresh data after adding new obat
+        } catch (err) {
+            console.error(err);
+            setError(err.message || 'Terjadi kesalahan.');
+        }
+    };
+
+    return (
+        <div>
+            <Logo 
+                src={logoPharmacy}
+                alt='Pharmacy Logo'
+            />
+            <div>
+                <h1 className='title'>
+                    Tambah Obat
+                </h1>
+                <form
+                    onSubmit={handleAddObat}
+                    id='addObatForm'
+                >
+                    <Input 
+                        label='Nama Obat'
+                        name='namaObat'
+                        type='text'
+                        placeholder='Masukkan Nama Obat'
+                        value={obat.namaObat}
+                        onChange={(e) => setObat({ ...obat, namaObat: e.target.value })}
+                    />
+                    <Input
+                        label='Jenis Obat'
+                        name='jenisObat'
+                        type='text'
+                        placeholder='Masukkan Jenis Obat'
+                        value={obat.jenisObat}
+                        onChange={(e) => setObat({ ...obat, jenisObat: e.target.value })}
+                    />
+                    <Input 
+                        label='Harga Obat'
+                        name='hargaObat'
+                        type='number'
+                        placeholder='Masukkan Harga Obat'
+                        value={obat.hargaObat}
+                        onChange={(e) => setObat({ ...obat, hargaObat: e.target.value })}
+                    />
+                    <Button
+                        type='submit'
+                        className='submit-button'
+                    >Tambah Obat</Button>
+                    {error && <p className='error'>{error}</p>}
+                </form>
+                <div>
+                    <h2>Daftar Obat</h2>
+                    <ul>
+                        {dataObat.map((item, index) => (
+                            <li key={index}>{item.namaObat} - {item.jenisObat} - Rp{item.hargaObat}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div> 
+        </div>
+    );
+}
+
+export default PembelianObat;

@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+
+
 import App from "./App";
 import "./App.css";
 import Regesterasi from "./components/Regesterasi";
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Pembelian-Obat",
-    element: <PembelianObat /> // Updated component name here as well
+    element: <PembelianObat /> 
   }
 ]);
 
